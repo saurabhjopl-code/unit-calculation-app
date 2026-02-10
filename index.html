@@ -35,11 +35,8 @@
         />
       </div>
 
-      <div class="search-suggestions">
-        <div class="suggestion-item">ST123</div>
-        <div class="suggestion-item">ST124</div>
-        <div class="suggestion-item">ST225</div>
-      </div>
+      <!-- MUST be empty: populated by JS -->
+      <div class="search-suggestions"></div>
     </section>
 
     <!-- VERIFY STYLE -->
@@ -62,21 +59,7 @@
       <h2 class="card-title">Select Sizes</h2>
 
       <div class="size-selection">
-        <div class="size-chip">Free Size</div>
-        <div class="size-chip">XS</div>
-        <div class="size-chip">S</div>
-        <div class="size-chip size-chip-selected">M</div>
-        <div class="size-chip">L</div>
-        <div class="size-chip">XL</div>
-        <div class="size-chip">XXL</div>
-        <div class="size-chip">3XL</div>
-        <div class="size-chip">4XL</div>
-        <div class="size-chip">5XL</div>
-        <div class="size-chip">6XL</div>
-        <div class="size-chip">7XL</div>
-        <div class="size-chip">8XL</div>
-        <div class="size-chip">9XL</div>
-        <div class="size-chip">10XL</div>
+        <!-- size chips rendered by logic later -->
       </div>
     </section>
 
@@ -117,12 +100,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>SKU001</td>
-              <td>ST123</td>
-              <td>M</td>
-              <td>120</td>
-            </tr>
+            <!-- populated by logic -->
           </tbody>
         </table>
       </div>
@@ -133,6 +111,9 @@
     </section>
 
   </main>
+
+  <!-- 🔥 REQUIRED: APP BOOTSTRAP -->
+  <script type="module" src="./js/app.js"></script>
 
 </body>
 </html>
