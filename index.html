@@ -63,7 +63,7 @@
       </div>
     </section>
 
-    <!-- SIZE SELECTION (ORDER LOCKED) -->
+    <!-- SIZE SELECTION -->
     <section class="card card-disabled">
       <h2 class="card-title">Select Sizes</h2>
 
@@ -86,9 +86,27 @@
       </div>
     </section>
 
-    <!-- UNIT INPUT -->
+    <!-- UNIT INPUT + SAVE (STEP 3) -->
     <section class="card card-disabled">
       <h2 class="card-title">Enter Units</h2>
+
+      <div class="unit-input-section">
+        <label class="unit-label">Total Units</label>
+
+        <input
+          type="number"
+          class="unit-input"
+          placeholder="Enter total units"
+        />
+
+        <div class="unit-helper">
+          Enter the total units for the selected sizes
+        </div>
+
+        <button class="save-button" disabled>
+          Save
+        </button>
+      </div>
     </section>
 
     <!-- PENDING -->
