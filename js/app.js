@@ -2,12 +2,17 @@ import { appState } from "./state/app.state.js";
 import { loadPending } from "./services/storage.service.js";
 import { loadStylesData } from "./services/styles.service.js";
 import { renderUI } from "./ui/ui.binding.js";
+import { renderPendingTable } from "./ui/pending.ui.js";
 
 import {
   getStyleSuggestions,
   renderSuggestions,
   clearSuggestions
 } from "./controllers/search.controller.js";
+
+import { verifyStyle } from "./controllers/style.controller.js";
+import { toggleSize } from "./controllers/size.controller.js";
+import { setUnits, saveCurrentSelection } from "./controllers/unit.controller.js";
 
 async function init() {
   appState.pending = loadPending();
@@ -22,6 +27,7 @@ async function init() {
   bindSave();
 
   renderUI();
+  renderPendingTable();
 
   console.log("App ready");
 }
@@ -41,36 +47,27 @@ function bindSearch() {
 
 function bindVerify() {
   document.querySelector(".verify-button")
-    .addEventListener("click", () => {
-      import("./controllers/style.controller.js")
-        .then(m => m.verifyStyle());
-    });
+    .addEventListener("click", verifyStyle);
 }
 
 function bindSizes() {
   document.querySelector(".size-selection")
     .addEventListener("click", e => {
       if (!e.target.classList.contains("size-chip")) return;
-
-      import("./controllers/size.controller.js")
-        .then(m => m.toggleSize(e.target.textContent));
+      toggleSize(e.target.textContent);
     });
 }
 
 function bindUnits() {
   document.querySelector(".input-number")
     .addEventListener("input", e => {
-      import("./controllers/unit.controller.js")
-        .then(m => m.setUnits(e.target.value));
+      setUnits(e.target.value);
     });
 }
 
 function bindSave() {
   document.querySelector(".save-button")
-    .addEventListener("click", () => {
-      import("./controllers/unit.controller.js")
-        .then(m => m.saveCurrentSelection());
-    });
+    .addEventListener("click", saveCurrentSelection);
 }
 
 document.addEventListener("DOMContentLoaded", init);
