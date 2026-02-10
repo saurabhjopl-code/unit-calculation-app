@@ -1,0 +1,12 @@
+body {
+  font-family: var(--font-main);
+  background: var(--bg-page);
+  color: var(--color-text);
+}
+
+.app-main {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
