@@ -1,9 +1,7 @@
 import { appState, STEPS } from "../state/app.state.js";
 import { goToStep } from "./flow.controller.js";
+import { renderUI } from "../ui/ui.binding.js";
 
-/**
- * Called when user selects a style from search
- */
 export function selectStyle(styleId) {
   const style = appState.stylesMap[styleId];
   if (!style) return;
@@ -14,11 +12,10 @@ export function selectStyle(styleId) {
   appState.current.units = null;
 
   goToStep(STEPS.STYLE_VERIFIED);
+  renderUI();
 }
 
-/**
- * Called when user clicks Verify Style
- */
 export function verifyStyle() {
   goToStep(STEPS.SIZE_SELECTED);
+  renderUI();
 }
