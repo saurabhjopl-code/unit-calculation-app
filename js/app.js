@@ -15,6 +15,8 @@ import { verifyStyle } from "./controllers/style.controller.js";
 import { toggleSize } from "./controllers/size.controller.js";
 import { setUnits, saveCurrentSelection } from "./controllers/unit.controller.js";
 
+/* ---------------- INIT ---------------- */
+
 async function init() {
   appState.pending = loadPending();
   appState.stylesMap = await loadStylesData();
@@ -30,9 +32,9 @@ async function init() {
 
   renderUI();
   renderPendingTable();
-  updateSubmitButtonState();
+  updateSubmitButtonState(); // ✅ REQUIRED AFTER RENDER
 
-  console.log("App ready (V1.2.2 STABLE)");
+  console.log("App ready (V1.2.3 FINAL)");
 }
 
 /* ---------- SUBMIT BUTTON STATE ---------- */
@@ -43,10 +45,12 @@ function updateSubmitButtonState() {
 
   if (appState.pending.length > 0) {
     btn.disabled = false;
-    btn.classList.add("is-active");
+    btn.classList.add("is-active");     // ✅ THIS WAS MISSING
+    btn.style.pointerEvents = "auto";
   } else {
     btn.disabled = true;
     btn.classList.remove("is-active");
+    btn.style.pointerEvents = "none";
   }
 }
 
@@ -57,10 +61,7 @@ function bindSearch() {
 
   input.addEventListener("input", e => {
     const value = e.target.value.trim();
-    if (!value) {
-      clearSuggestions();
-      return;
-    }
+    if (!value) return clearSuggestions();
     renderSuggestions(getStyleSuggestions(value));
   });
 }
@@ -92,9 +93,9 @@ function bindSave() {
   document
     .querySelector(".save-button")
     .addEventListener("click", () => {
-      saveCurrentSelection();          // ✅ localStorage save restored
+      saveCurrentSelection();
       renderPendingTable();
-      updateSubmitButtonState();
+      updateSubmitButtonState(); // ✅ REQUIRED AFTER SAVE
     });
 }
 
@@ -112,6 +113,7 @@ function bindSubmit() {
     btn.disabled = true;
     btn.classList.remove("is-active");
     btn.textContent = "Submitting...";
+    btn.style.pointerEvents = "none";
 
     try {
       const result = await submitToGoogleDrive(appState.pending);
@@ -120,7 +122,7 @@ function bindSubmit() {
         clearPending();
         appState.pending = [];
         renderPendingTable();
-        updateSubmitButtonState();
+        updateSubmitButtonState(); // ✅ REQUIRED AFTER CLEAR
         alert("Data successfully submitted to Google Sheet ✅");
       } else {
         alert("Submission failed: " + result.error);
@@ -129,7 +131,6 @@ function bindSubmit() {
       alert("Network error. Please try again.");
     } finally {
       btn.textContent = "Submit to Google Drive";
-      updateSubmitButtonState();
     }
   });
 }
