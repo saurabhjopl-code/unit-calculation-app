@@ -8,6 +8,8 @@ export const STEPS = {
 export const appState = {
   step: STEPS.STYLE_SEARCH,
 
+  stylesMap: {},
+
   current: {
     sku: null,
     styleId: null,
