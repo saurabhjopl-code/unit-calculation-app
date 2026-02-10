@@ -92,49 +92,43 @@
 
       <div class="unit-input-section">
         <label class="unit-label">Total Units</label>
-
-        <input
-          type="number"
-          class="unit-input"
-          placeholder="Enter total units"
-        />
-
+        <input type="number" class="unit-input" placeholder="Enter total units" />
         <div class="unit-helper">
           Enter the total units for the selected sizes
         </div>
-
-        <button class="save-button" disabled>
-          Save
-        </button>
+        <button class="save-button" disabled>Save</button>
       </div>
     </section>
 
-    <!-- PENDING SUBMISSIONS (FINAL STEP) -->
+    <!-- PENDING SUBMISSIONS (REFINED TABLE) -->
     <section class="card">
       <h2 class="card-title">Pending Submissions</h2>
 
-      <!-- EMPTY STATE -->
-      <div class="pending-empty">
-        No pending submissions yet
-      </div>
-
-      <!-- LIST (SAMPLE UI) -->
-      <div class="pending-list">
-        <div class="pending-item">
-          <div class="pending-left">
-            <div class="pending-style">ST123</div>
-            <div class="pending-sizes">M, L, XL</div>
-          </div>
-          <div class="pending-units">120</div>
-        </div>
-
-        <div class="pending-item">
-          <div class="pending-left">
-            <div class="pending-style">ST225</div>
-            <div class="pending-sizes">Free Size</div>
-          </div>
-          <div class="pending-units">45</div>
-        </div>
+      <div class="pending-table-wrapper">
+        <table class="pending-table">
+          <thead>
+            <tr>
+              <th>SKU</th>
+              <th>STYLE</th>
+              <th>SIZE</th>
+              <th>UNIT</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>SKU001</td>
+              <td>ST123</td>
+              <td>M</td>
+              <td>120</td>
+            </tr>
+            <tr>
+              <td>SKU002</td>
+              <td>ST225</td>
+              <td>Free Size</td>
+              <td>45</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
 
       <button class="submit-button">
