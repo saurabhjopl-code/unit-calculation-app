@@ -1,19 +1,12 @@
-import { appState, STEPS } from "../state/app.state.js";
-import { goToStep } from "./flow.controller.js";
+import { appState } from "../state/app.state.js";
 import { renderUI } from "../ui/ui.binding.js";
 
 export function toggleSize(size) {
-  const index = appState.current.sizes.indexOf(size);
+  // ❌ Block if style not verified
+  if (!appState.current?.styleId) return;
 
-  if (index === -1) {
-    appState.current.sizes.push(size);
-  } else {
-    appState.current.sizes.splice(index, 1);
-  }
-
-  if (appState.current.sizes.length > 0) {
-    goToStep(STEPS.UNIT_ENTERED);
-  }
+  // ✅ Enforce SINGLE size selection
+  appState.current.size = size;
 
   renderUI();
 }
