@@ -2,6 +2,13 @@ import { appState } from "../state/app.state.js";
 import { selectStyle } from "./style.controller.js";
 
 /**
+ * Get style search input (STYLE SEARCH ONLY)
+ */
+function getSearchInput() {
+  return document.querySelector(".card:first-of-type .input-field");
+}
+
+/**
  * Filter styles based on input value
  */
 export function getStyleSuggestions(query) {
@@ -11,7 +18,7 @@ export function getStyleSuggestions(query) {
 
   return Object.keys(appState.stylesMap)
     .filter(styleId => styleId.toLowerCase().includes(q))
-    .slice(0, 20); // hard limit for safety
+    .slice(0, 20);
 }
 
 /**
@@ -39,7 +46,7 @@ export function renderSuggestions(suggestions) {
 }
 
 /**
- * Clear suggestions list
+ * Clear suggestions
  */
 export function clearSuggestions() {
   const container = document.querySelector(".search-suggestions");
@@ -47,9 +54,9 @@ export function clearSuggestions() {
 }
 
 /**
- * Set input value programmatically
+ * Set value into search input
  */
 export function setSearchInput(value) {
-  const input = document.querySelector(".input-field");
+  const input = getSearchInput();
   if (input) input.value = value;
 }
