@@ -1,15 +1,7 @@
+/* HEADER */
 .app-logo {
   height: 34px;
   width: auto;
-}
-
-.header-left {
-  display: flex;
-  align-items: center;
-}
-
-.header-center {
-  text-align: center;
 }
 
 .app-title {
@@ -19,6 +11,25 @@
   letter-spacing: 0.4px;
 }
 
-.header-right {
-  width: 34px; /* balances logo width */
+/* CARD */
+.card {
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg) var(--space-md);
+  border: 1px solid var(--color-border);
+  box-shadow:
+    0 10px 25px rgba(2, 6, 23, 0.08),
+    0 2px 6px rgba(2, 6, 23, 0.04);
+}
+
+.card-title {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: var(--space-sm);
+  color: var(--color-text);
+}
+
+.card-body {
+  font-size: 14px;
+  color: var(--color-muted);
 }
