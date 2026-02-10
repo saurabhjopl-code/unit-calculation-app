@@ -14,9 +14,9 @@ export const appState = {
     sku: null,
     styleId: null,
     imageUrl: null,
-    sizes: [],
     units: null
   },
 
   pending: []
 };
+
