@@ -30,11 +30,27 @@ async function init() {
 
   renderUI();
   renderPendingTable();
+  updateSubmitButtonState();
 
   console.log("App ready (V1.2)");
 }
 
-/* -------- BINDINGS -------- */
+/* ---------- HELPERS ---------- */
+
+function updateSubmitButtonState() {
+  const btn = document.querySelector(".submit-button");
+  if (!btn) return;
+
+  if (appState.pending.length > 0) {
+    btn.disabled = false;
+    btn.style.opacity = "1";
+  } else {
+    btn.disabled = true;
+    btn.style.opacity = "0.6";
+  }
+}
+
+/* ---------- BINDINGS ---------- */
 
 function bindSearch() {
   const input = document.querySelector(".card:first-of-type .input-field");
@@ -68,22 +84,27 @@ function bindUnits() {
 
 function bindSave() {
   document.querySelector(".save-button")
-    .addEventListener("click", saveCurrentSelection);
+    .addEventListener("click", () => {
+      saveCurrentSelection();
+      renderPendingTable();
+      updateSubmitButtonState();
+    });
 }
 
-/* -------- GOOGLE DRIVE SUBMIT -------- */
+/* ---------- GOOGLE DRIVE SUBMIT ---------- */
 
 function bindSubmit() {
   const btn = document.querySelector(".submit-button");
 
   btn.addEventListener("click", async () => {
     if (!appState.pending.length) {
-      alert("No pending data to submit");
+      alert("No Data to Submit.");
       return;
     }
 
     btn.disabled = true;
     btn.textContent = "Submitting...";
+    btn.style.opacity = "0.6";
 
     try {
       const result = await submitToGoogleDrive(appState.pending);
@@ -92,6 +113,7 @@ function bindSubmit() {
         clearPending();
         appState.pending = [];
         renderPendingTable();
+        updateSubmitButtonState();
         alert("Data successfully submitted to Google Sheet ✅");
       } else {
         alert("Submission failed: " + result.error);
@@ -99,7 +121,6 @@ function bindSubmit() {
     } catch (err) {
       alert("Network error. Please try again.");
     } finally {
-      btn.disabled = false;
       btn.textContent = "Submit to Google Drive";
     }
   });
