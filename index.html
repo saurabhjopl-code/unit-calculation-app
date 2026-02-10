@@ -13,7 +13,7 @@
 </head>
 <body>
 
-  <!-- HEADER (CENTERED MOBILE SAAS) -->
+  <!-- HEADER -->
   <header class="app-header">
     <img src="./data/logo.png" alt="Logo" class="app-logo" />
     <span class="app-title">Unit Calculation</span>
@@ -21,13 +21,48 @@
 
   <!-- MAIN -->
   <main class="app-main">
-    <section class="card"><h2 class="card-title">Select Style</h2></section>
-    <section class="card"><h2 class="card-title">Verify Style</h2></section>
-    <section class="card"><h2 class="card-title">Select Sizes</h2></section>
-    <section class="card"><h2 class="card-title">Enter Units</h2></section>
-    <section class="card"><h2 class="card-title">Pending Submissions</h2></section>
+
+    <!-- STYLE SELECTION -->
+    <section class="card">
+      <h2 class="card-title">Select Style</h2>
+
+      <div class="style-select">
+        <input
+          type="text"
+          class="style-input"
+          placeholder="Search or select Style ID"
+          readonly
+        />
+
+        <div class="style-dropdown">
+          <div class="style-option">ST123</div>
+          <div class="style-option">ST124</div>
+          <div class="style-option">ST125</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VERIFY STYLE -->
+    <section class="card">
+      <h2 class="card-title">Verify Style</h2>
+    </section>
+
+    <!-- SIZE SELECTION -->
+    <section class="card">
+      <h2 class="card-title">Select Sizes</h2>
+    </section>
+
+    <!-- UNIT INPUT -->
+    <section class="card">
+      <h2 class="card-title">Enter Units</h2>
+    </section>
+
+    <!-- PENDING -->
+    <section class="card">
+      <h2 class="card-title">Pending Submissions</h2>
+    </section>
+
   </main>
 
 </body>
 </html>
-
