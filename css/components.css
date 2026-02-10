@@ -1,14 +1,12 @@
 /* HEADER */
 .app-logo {
   height: 28px;
-  width: auto;
 }
 
 .app-title {
   font-size: 20px;
   font-weight: 600;
   color: #f8fafc;
-  letter-spacing: 0.6px;
 }
 
 /* CARD */
@@ -22,47 +20,60 @@
     0 2px 6px rgba(2, 6, 23, 0.04);
 }
 
+.card-disabled {
+  opacity: 0.45;
+}
+
 .card-title {
   font-size: 15px;
   font-weight: 600;
   margin-bottom: var(--space-sm);
 }
 
-/* STYLE SELECTION */
-.style-select {
-  position: relative;
+/* PREMIUM SEARCH */
+.style-search {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
-.style-input {
-  width: 100%;
-  padding: 14px;
-  font-size: 15px;
-  border-radius: var(--radius-md);
-  border: 1px solid var(--color-border);
+.search-input-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 16px;
+  border-radius: var(--radius-lg);
   background: #ffffff;
-  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  box-shadow: 0 6px 16px rgba(15, 23, 42, 0.08);
 }
 
-.style-input::placeholder {
+.search-icon {
+  font-size: 16px;
   color: var(--color-muted);
 }
 
-.style-dropdown {
-  margin-top: 8px;
-  border-radius: var(--radius-md);
-  border: 1px solid var(--color-border);
-  overflow: hidden;
-  background: #ffffff;
-  box-shadow: 0 8px 20px rgba(2, 6, 23, 0.08);
+.search-input {
+  border: none;
+  outline: none;
+  font-size: 15px;
+  flex: 1;
 }
 
-.style-option {
-  padding: 12px 14px;
+.search-suggestions {
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  background: #ffffff;
+  overflow: hidden;
+}
+
+.suggestion-item {
+  padding: 12px 16px;
   font-size: 15px;
   border-bottom: 1px solid var(--color-border);
 }
 
-.style-option:last-child {
+.suggestion-item:last-child {
   border-bottom: none;
 }
 
@@ -74,12 +85,11 @@
 }
 
 .style-image-wrapper {
-  position: relative;
   width: 100%;
   aspect-ratio: 1 / 1;
   border-radius: var(--radius-md);
-  border: 1px dashed var(--color-border);
   background: #f1f5f9;
+  border: 1px dashed var(--color-border);
   overflow: hidden;
 }
 
@@ -87,19 +97,6 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  display: none;
-}
-
-.style-image-placeholder {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 14px;
-  color: var(--color-muted);
-  text-align: center;
-  padding: 16px;
 }
 
 .verify-button {
@@ -111,5 +108,11 @@
   border: none;
   background: var(--color-primary);
   color: #ffffff;
-  opacity: 0.5;
+  opacity: 0.6;
+}
+
+/* PENDING */
+.pending-placeholder {
+  font-size: 14px;
+  color: var(--color-muted);
 }
