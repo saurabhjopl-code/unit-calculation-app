@@ -4,7 +4,7 @@ body {
   color: var(--color-text);
 }
 
-/* HEADER – MOBILE SAFE */
+/* HEADER – NEVER BREAKS ON MOBILE */
 .app-header {
   position: sticky;
   top: 0;
@@ -21,23 +21,23 @@ body {
   box-shadow: 0 6px 20px rgba(2, 6, 23, 0.4);
 }
 
-/* LEFT: LOGO */
+/* LEFT LOGO */
 .header-left {
   display: flex;
   align-items: center;
   z-index: 2;
 }
 
-/* CENTER: TITLE (TRUE CENTER, NEVER WRAPS) */
-.header-center {
+/* ABSOLUTE CENTER TITLE */
+.header-title-overlay {
   position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 0;
+  right: 0;
   text-align: center;
   pointer-events: none;
 }
 
-/* RIGHT: RESERVED */
+/* RIGHT PLACEHOLDER */
 .header-right {
   margin-left: auto;
   width: 36px;
