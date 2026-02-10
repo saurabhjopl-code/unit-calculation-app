@@ -32,10 +32,10 @@ async function init() {
   renderPendingTable();
   updateSubmitButtonState();
 
-  console.log("App ready (V1.2.2)");
+  console.log("App ready (V1.2.2 STABLE)");
 }
 
-/* ---------- SUBMIT BUTTON STATE (FINAL) ---------- */
+/* ---------- SUBMIT BUTTON STATE ---------- */
 
 function updateSubmitButtonState() {
   const btn = document.querySelector(".submit-button");
@@ -92,7 +92,7 @@ function bindSave() {
   document
     .querySelector(".save-button")
     .addEventListener("click", () => {
-      saveCurrentSelection();
+      saveCurrentSelection();          // ✅ localStorage save restored
       renderPendingTable();
       updateSubmitButtonState();
     });
@@ -125,7 +125,7 @@ function bindSubmit() {
       } else {
         alert("Submission failed: " + result.error);
       }
-    } catch (err) {
+    } catch {
       alert("Network error. Please try again.");
     } finally {
       btn.textContent = "Submit to Google Drive";
