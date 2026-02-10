@@ -30,7 +30,7 @@
   margin-bottom: 12px;
 }
 
-/* INPUT – SAAS GRADE (GLOBAL) */
+/* INPUT */
 .input-surface {
   display: flex;
   align-items: center;
@@ -39,8 +39,7 @@
   border-radius: 16px;
   background: #ffffff;
   border: 1px solid #e5e7eb;
-  box-shadow:
-    0 8px 20px rgba(15, 23, 42, 0.12);
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.12);
 }
 
 .input-icon {
@@ -108,7 +107,6 @@
   border-radius: 999px;
   font-size: 14px;
   border: 1px solid #e5e7eb;
-  cursor: pointer;
 }
 
 .size-chip-selected {
@@ -124,10 +122,9 @@
   margin-top: 8px;
 }
 
-/* PRIMARY ACTION BUTTONS */
+/* BUTTONS */
 .save-button,
-.submit-button,
-.verify-button {
+.submit-button {
   margin-top: 14px;
   width: 100%;
   padding: 14px;
@@ -138,23 +135,13 @@
   background: #2563eb;
   color: #ffffff;
   opacity: 0.6;
-  cursor: not-allowed;
-  transition: all 0.2s ease;
+  pointer-events: none;
 }
 
-/* ENABLED STATE */
-.save-button:not(:disabled),
-.submit-button:not(:disabled),
-.verify-button:not(:disabled) {
+/* ✅ ACTIVE STATE (THIS FIXES IT) */
+.submit-button.is-active {
   opacity: 1;
-  cursor: pointer;
-}
-
-/* PRESS FEEDBACK */
-.save-button:not(:disabled):active,
-.submit-button:not(:disabled):active,
-.verify-button:not(:disabled):active {
-  transform: scale(0.98);
+  pointer-events: auto;
 }
 
 /* TABLE */
