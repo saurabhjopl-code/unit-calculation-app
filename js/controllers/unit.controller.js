@@ -1,31 +1,23 @@
 import { appState } from "../state/app.state.js";
 import { savePending } from "../services/storage.service.js";
 import { resetCurrentSelection } from "./flow.controller.js";
+import { renderUI } from "../ui/ui.binding.js";
 
-/**
- * Set units from input (numeric)
- */
 export function setUnits(units) {
   appState.current.units = Number(units);
 }
 
-/**
- * Save current selection into pending submissions.
- * One size = one SKU = one pending row.
- */
 export function saveCurrentSelection() {
   const { styleId, sizes, units } = appState.current;
-  if (!styleId || !sizes.length || !units || units <= 0) return;
+  if (!styleId || !sizes.length || !units) return;
 
   const style = appState.stylesMap[styleId];
-  if (!style) return;
 
   sizes.forEach(size => {
-    const skuObj = style.skusBySize[size];
-    if (!skuObj) return;
+    const sku = style.skusBySize[size].sku;
 
     appState.pending.push({
-      sku: skuObj.sku,
+      sku,
       styleId,
       size,
       units
@@ -34,4 +26,5 @@ export function saveCurrentSelection() {
 
   savePending(appState.pending);
   resetCurrentSelection();
+  renderUI();
 }
