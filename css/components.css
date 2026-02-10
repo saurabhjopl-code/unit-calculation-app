@@ -108,6 +108,7 @@
   border-radius: 999px;
   font-size: 14px;
   border: 1px solid #e5e7eb;
+  cursor: pointer;
 }
 
 .size-chip-selected {
@@ -123,8 +124,10 @@
   margin-top: 8px;
 }
 
+/* PRIMARY ACTION BUTTONS */
 .save-button,
-.submit-button {
+.submit-button,
+.verify-button {
   margin-top: 14px;
   width: 100%;
   padding: 14px;
@@ -135,6 +138,23 @@
   background: #2563eb;
   color: #ffffff;
   opacity: 0.6;
+  cursor: not-allowed;
+  transition: all 0.2s ease;
+}
+
+/* ENABLED STATE */
+.save-button:not(:disabled),
+.submit-button:not(:disabled),
+.verify-button:not(:disabled) {
+  opacity: 1;
+  cursor: pointer;
+}
+
+/* PRESS FEEDBACK */
+.save-button:not(:disabled):active,
+.submit-button:not(:disabled):active,
+.verify-button:not(:disabled):active {
+  transform: scale(0.98);
 }
 
 /* TABLE */
