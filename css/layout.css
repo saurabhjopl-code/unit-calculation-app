@@ -4,43 +4,22 @@ body {
   color: var(--color-text);
 }
 
-/* HEADER – NEVER BREAKS ON MOBILE */
+/* HEADER – MOBILE FIRST, UNBREAKABLE */
 .app-header {
   position: sticky;
   top: 0;
-  height: var(--header-height);
   background: linear-gradient(
     180deg,
     var(--bg-header-start),
     var(--bg-header-end)
   );
+  padding: 12px 16px 14px;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  padding: 0 var(--space-md);
+  gap: 6px;
   z-index: 100;
   box-shadow: 0 6px 20px rgba(2, 6, 23, 0.4);
-}
-
-/* LEFT LOGO */
-.header-left {
-  display: flex;
-  align-items: center;
-  z-index: 2;
-}
-
-/* ABSOLUTE CENTER TITLE */
-.header-title-overlay {
-  position: absolute;
-  left: 0;
-  right: 0;
-  text-align: center;
-  pointer-events: none;
-}
-
-/* RIGHT PLACEHOLDER */
-.header-right {
-  margin-left: auto;
-  width: 36px;
 }
 
 /* MAIN */
