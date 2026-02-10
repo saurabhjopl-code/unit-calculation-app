@@ -12,8 +12,13 @@ async function init() {
   appState.pending = loadPending();
   appState.stylesMap = await loadStylesData();
 
+  // 🔥 EXPOSE FOR DEBUGGING
+  window.appState = appState;
+
   bindSearch();
-  console.log("App ready", appState);
+
+  console.log("App ready");
+  console.log("Styles loaded:", Object.keys(appState.stylesMap).length);
 }
 
 /**
