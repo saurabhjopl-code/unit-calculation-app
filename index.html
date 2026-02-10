@@ -86,7 +86,7 @@
       </div>
     </section>
 
-    <!-- UNIT INPUT + SAVE (STEP 3) -->
+    <!-- UNIT INPUT -->
     <section class="card card-disabled">
       <h2 class="card-title">Enter Units</h2>
 
@@ -109,12 +109,37 @@
       </div>
     </section>
 
-    <!-- PENDING -->
+    <!-- PENDING SUBMISSIONS (FINAL STEP) -->
     <section class="card">
       <h2 class="card-title">Pending Submissions</h2>
-      <div class="pending-placeholder">
-        No pending submissions
+
+      <!-- EMPTY STATE -->
+      <div class="pending-empty">
+        No pending submissions yet
       </div>
+
+      <!-- LIST (SAMPLE UI) -->
+      <div class="pending-list">
+        <div class="pending-item">
+          <div class="pending-left">
+            <div class="pending-style">ST123</div>
+            <div class="pending-sizes">M, L, XL</div>
+          </div>
+          <div class="pending-units">120</div>
+        </div>
+
+        <div class="pending-item">
+          <div class="pending-left">
+            <div class="pending-style">ST225</div>
+            <div class="pending-sizes">Free Size</div>
+          </div>
+          <div class="pending-units">45</div>
+        </div>
+      </div>
+
+      <button class="submit-button">
+        Submit to Google Drive
+      </button>
     </section>
 
   </main>
