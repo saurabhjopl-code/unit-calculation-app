@@ -13,10 +13,12 @@ export const appState = {
   current: {
     sku: null,
     styleId: null,
+    size: null,
     imageUrl: null,
     units: null
   },
 
   pending: []
 };
+
 
