@@ -5,7 +5,7 @@ export function goToStep(step) {
 }
 
 /**
- * Reset current selection AND clear search input
+ * Reset current selection AND clear related inputs
  */
 export function resetCurrentSelection() {
   appState.current = {
@@ -19,6 +19,10 @@ export function resetCurrentSelection() {
   // 🔥 Clear style search input
   const searchInput = document.querySelector(".card:first-of-type .input-field");
   if (searchInput) searchInput.value = "";
+
+  // 🔥 Clear unit input
+  const unitInput = document.querySelector(".input-number");
+  if (unitInput) unitInput.value = "";
 
   appState.step = STEPS.STYLE_SEARCH;
 }
