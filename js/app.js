@@ -32,10 +32,10 @@ async function init() {
   renderPendingTable();
   updateSubmitButtonState();
 
-  console.log("App ready (V1.2)");
+  console.log("App ready (V1.2.1)");
 }
 
-/* ---------- HELPERS ---------- */
+/* ---------- SUBMIT BUTTON STATE ---------- */
 
 function updateSubmitButtonState() {
   const btn = document.querySelector(".submit-button");
@@ -44,9 +44,11 @@ function updateSubmitButtonState() {
   if (appState.pending.length > 0) {
     btn.disabled = false;
     btn.style.opacity = "1";
+    btn.style.pointerEvents = "auto";
   } else {
     btn.disabled = true;
     btn.style.opacity = "0.6";
+    btn.style.pointerEvents = "none";
   }
 }
 
@@ -105,6 +107,7 @@ function bindSubmit() {
     btn.disabled = true;
     btn.textContent = "Submitting...";
     btn.style.opacity = "0.6";
+    btn.style.pointerEvents = "none";
 
     try {
       const result = await submitToGoogleDrive(appState.pending);
