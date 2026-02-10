@@ -17,14 +17,18 @@ async function init() {
 }
 
 /**
- * Bind search input events
+ * Bind STYLE SEARCH input only
  */
 function bindSearch() {
-  const input = document.querySelector(".input-field");
-  if (!input) return;
+  const input = document.querySelector(".card:first-of-type .input-field");
+  if (!input) {
+    console.error("Style search input not found");
+    return;
+  }
 
   input.addEventListener("input", e => {
     const value = e.target.value.trim();
+
     if (!value) {
       clearSuggestions();
       return;
