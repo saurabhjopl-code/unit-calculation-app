@@ -16,21 +16,25 @@ export function renderUI() {
 function renderCards() {
   const cards = document.querySelectorAll(".card");
 
-  // Disable all except search
   cards.forEach((card, index) => {
-    if (index === 0) return;
+    if (index === 0) return; // Style search always enabled
+
     card.classList.add("card-disabled");
   });
 
-  // After verify → enable size
-  if (appState.step >= STEPS.STYLE_VERIFIED) {
-    cards[1].classList.remove("card-disabled"); // Verify
-    cards[2].classList.remove("card-disabled"); // Size
+  if (appState.step === STEPS.STYLE_VERIFIED) {
+    cards[1].classList.remove("card-disabled");
   }
 
-  // After size → enable unit
-  if (appState.step >= STEPS.SIZE_SELECTED) {
-    cards[3].classList.remove("card-disabled"); // Unit
+  if (appState.step === STEPS.SIZE_SELECTED) {
+    cards[1].classList.remove("card-disabled");
+    cards[2].classList.remove("card-disabled");
+  }
+
+  if (appState.step === STEPS.UNIT_ENTERED) {
+    cards[1].classList.remove("card-disabled");
+    cards[2].classList.remove("card-disabled");
+    cards[3].classList.remove("card-disabled");
   }
 }
 
@@ -54,8 +58,7 @@ function renderSizes() {
 
   container.innerHTML = "";
 
-  // HARD GATE: sizes only after verify
-  if (appState.step < STEPS.STYLE_VERIFIED) {
+  if (appState.step !== STEPS.SIZE_SELECTED && appState.step !== STEPS.UNIT_ENTERED) {
     return;
   }
 
@@ -67,8 +70,7 @@ function renderSizes() {
     div.className = "size-chip";
     div.textContent = size;
 
-    // SINGLE SIZE RULE
-    if (appState.current.size === size) {
+    if (appState.current.sizes.includes(size)) {
       div.classList.add("size-chip-selected");
     }
 
@@ -84,8 +86,6 @@ function renderUnit() {
 
   if (!input || !btn) return;
 
-  const enabled = appState.step === STEPS.SIZE_SELECTED;
-
-  input.disabled = !enabled;
-  btn.disabled = !enabled;
+  input.disabled = appState.step !== STEPS.UNIT_ENTERED;
+  btn.disabled = appState.step !== STEPS.UNIT_ENTERED;
 }

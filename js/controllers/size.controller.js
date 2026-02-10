@@ -1,15 +1,19 @@
-import { appState } from "../state/app.state.js";
+import { appState, STEPS } from "../state/app.state.js";
+import { goToStep } from "./flow.controller.js";
 import { renderUI } from "../ui/ui.binding.js";
 
 export function toggleSize(size) {
-  // 🔒 HARD BLOCK: style must be verified
-  if (!appState.current.styleId) {
-    console.warn("Size blocked: style not verified");
-    return;
+  const index = appState.current.sizes.indexOf(size);
+
+  if (index === -1) {
+    appState.current.sizes.push(size);
+  } else {
+    appState.current.sizes.splice(index, 1);
   }
 
-  // 🔒 SINGLE SIZE RULE (no multi-select)
-  appState.current.size = size;
+  if (appState.current.sizes.length > 0) {
+    goToStep(STEPS.UNIT_ENTERED);
+  }
 
   renderUI();
 }
