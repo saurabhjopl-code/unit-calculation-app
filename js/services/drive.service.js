@@ -6,11 +6,11 @@ const GOOGLE_SCRIPT_URL =
 const SECRET_KEY = "SWASTIK6482";
 
 export async function submitToGoogleDrive(rows) {
-  const deviceId = getDeviceId(); // ✅ MUST BE CALLED HERE
+  const deviceId = getDeviceId(); // ✅ ALWAYS GENERATED
 
   const payload = {
     secret: SECRET_KEY,
-    deviceId,          // ✅ MUST BE SENT
+    deviceId,
     rows
   };
 
