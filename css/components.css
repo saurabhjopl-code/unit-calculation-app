@@ -122,8 +122,9 @@
   margin-top: 8px;
 }
 
-/* BUTTONS */
+/* BUTTONS (BASE) */
 .save-button,
+.verify-button,
 .submit-button {
   margin-top: 14px;
   width: 100%;
@@ -134,14 +135,19 @@
   border: none;
   background: #2563eb;
   color: #ffffff;
-  opacity: 0.6;
-  pointer-events: none;
 }
 
-/* ✅ ACTIVE STATE (THIS FIXES IT) */
+/* Disabled look (used by Save & Verify naturally) */
+.save-button:disabled,
+.verify-button:disabled,
+.submit-button {
+  opacity: 0.6;
+}
+
+/* ✅ ACTIVE STATE — SUBMIT ONLY */
 .submit-button.is-active {
   opacity: 1;
-  pointer-events: auto;
+  cursor: pointer;
 }
 
 /* TABLE */
