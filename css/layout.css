@@ -4,7 +4,7 @@ body {
   color: var(--color-text);
 }
 
-/* HEADER – MOBILE FIRST, UNBREAKABLE */
+/* HEADER */
 .app-header {
   position: sticky;
   top: 0;
