@@ -1,12 +1,24 @@
-.card {
-  background: var(--bg-card);
-  border-radius: var(--radius);
-  padding: 16px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+.app-logo {
+  height: 34px;
+  width: auto;
 }
 
-.card-title {
-  font-size: 16px;
+.header-left {
+  display: flex;
+  align-items: center;
+}
+
+.header-center {
+  text-align: center;
+}
+
+.app-title {
+  font-size: 17px;
   font-weight: 600;
-  margin-bottom: 12px;
+  color: #f8fafc;
+  letter-spacing: 0.4px;
+}
+
+.header-right {
+  width: 34px; /* balances logo width */
 }
