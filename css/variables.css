@@ -1,0 +1,13 @@
+:root {
+  --bg-page: #f1f5f9;
+  --bg-card: #ffffff;
+  --color-primary: #2563eb;
+  --color-text: #0f172a;
+  --color-muted: #64748b;
+
+  --radius: 14px;
+  --spacing: 16px;
+
+  --header-height: 60px;
+  --font-main: system-ui, -apple-system, sans-serif;
+}
