@@ -1,40 +1,39 @@
 import { appState } from "../state/app.state.js";
 import { savePending } from "../services/storage.service.js";
+import { resetCurrentSelection } from "./flow.controller.js";
+import { renderUI } from "../ui/ui.binding.js";
+import { renderPendingTable } from "../ui/pending.ui.js";
 
-/**
- * Set units while typing
- */
-export function setUnits(value) {
-  appState.current.units = Number(value) || 0;
+export function setUnits(units) {
+  appState.current.units = Number(units);
 }
 
-/**
- * Save current style + size + unit into pending list
- */
 export function saveCurrentSelection() {
-  const { styleId, selectedSizes, units } = appState.current;
+  const { styleId, sizes, units } = appState.current;
 
-  if (!styleId || !selectedSizes.length || !units) {
+  if (!styleId || !sizes.length || !units || units <= 0) {
+    console.warn("Save blocked: invalid data", appState.current);
     return;
   }
 
-  selectedSizes.forEach(size => {
-    const sku = `${styleId}-${size}`;
+  const style = appState.stylesMap[styleId];
+
+  sizes.forEach(size => {
+    const sku = style.skusBySize[size].sku;
 
     appState.pending.push({
       sku,
-      style: styleId,   // ✅ FIX: STYLE IS NOW SAVED
+      styleId,
       size,
       units
     });
   });
 
   savePending(appState.pending);
+  resetCurrentSelection();
 
-  /* ---- RESET CURRENT SELECTION ---- */
-  appState.current = {
-    styleId: null,
-    selectedSizes: [],
-    units: 0
-  };
+  renderUI();
+  renderPendingTable();
+
+  console.log("Saved to localStorage", appState.pending);
 }

@@ -5,26 +5,9 @@ const SECRET_KEY = "SWASTIK6482";
 
 /**
  * Submit pending rows to Google Sheet
+ * Uses text/plain to avoid CORS preflight
  */
 export async function submitToGoogleDrive(rows) {
-  // 🔐 Always normalize rows before sending
-  const normalizedRows = rows.map(r => {
-    let style = r.style;
-
-    // 🛡️ FAILSAFE: derive style from SKU if missing
-    if (!style && r.sku) {
-      style = r.sku.split("-")[0];
-    }
-
-    return {
-      sku: r.sku || "",
-      style: style || "",
-      size: r.size || "",
-      units: r.units || 0,
-      deviceId: r.deviceId || "UNKNOWN_DEVICE"
-    };
-  });
-
   const response = await fetch(GOOGLE_SCRIPT_URL, {
     method: "POST",
     headers: {
@@ -32,7 +15,7 @@ export async function submitToGoogleDrive(rows) {
     },
     body: JSON.stringify({
       secret: SECRET_KEY,
-      rows: normalizedRows
+      rows
     })
   });
 
