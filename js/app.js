@@ -32,10 +32,10 @@ async function init() {
   renderPendingTable();
   updateSubmitButtonState();
 
-  console.log("App ready (V1.2.1)");
+  console.log("App ready (V1.2.2)");
 }
 
-/* ---------- SUBMIT BUTTON STATE ---------- */
+/* ---------- SUBMIT BUTTON STATE (FINAL) ---------- */
 
 function updateSubmitButtonState() {
   const btn = document.querySelector(".submit-button");
@@ -43,12 +43,10 @@ function updateSubmitButtonState() {
 
   if (appState.pending.length > 0) {
     btn.disabled = false;
-    btn.style.opacity = "1";
-    btn.style.pointerEvents = "auto";
+    btn.classList.add("is-active");
   } else {
     btn.disabled = true;
-    btn.style.opacity = "0.6";
-    btn.style.pointerEvents = "none";
+    btn.classList.remove("is-active");
   }
 }
 
@@ -59,18 +57,23 @@ function bindSearch() {
 
   input.addEventListener("input", e => {
     const value = e.target.value.trim();
-    if (!value) return clearSuggestions();
+    if (!value) {
+      clearSuggestions();
+      return;
+    }
     renderSuggestions(getStyleSuggestions(value));
   });
 }
 
 function bindVerify() {
-  document.querySelector(".verify-button")
+  document
+    .querySelector(".verify-button")
     .addEventListener("click", verifyStyle);
 }
 
 function bindSizes() {
-  document.querySelector(".size-selection")
+  document
+    .querySelector(".size-selection")
     .addEventListener("click", e => {
       if (!e.target.classList.contains("size-chip")) return;
       toggleSize(e.target.textContent);
@@ -78,14 +81,16 @@ function bindSizes() {
 }
 
 function bindUnits() {
-  document.querySelector(".input-number")
+  document
+    .querySelector(".input-number")
     .addEventListener("input", e => {
       setUnits(e.target.value);
     });
 }
 
 function bindSave() {
-  document.querySelector(".save-button")
+  document
+    .querySelector(".save-button")
     .addEventListener("click", () => {
       saveCurrentSelection();
       renderPendingTable();
@@ -105,9 +110,8 @@ function bindSubmit() {
     }
 
     btn.disabled = true;
+    btn.classList.remove("is-active");
     btn.textContent = "Submitting...";
-    btn.style.opacity = "0.6";
-    btn.style.pointerEvents = "none";
 
     try {
       const result = await submitToGoogleDrive(appState.pending);
@@ -125,6 +129,7 @@ function bindSubmit() {
       alert("Network error. Please try again.");
     } finally {
       btn.textContent = "Submit to Google Drive";
+      updateSubmitButtonState();
     }
   });
 }
