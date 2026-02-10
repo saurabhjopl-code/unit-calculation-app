@@ -1,5 +1,4 @@
 :root {
-  /* Colors */
   --bg-page: #f8fafc;
   --bg-card: #ffffff;
   --bg-header-start: #0f172a;
@@ -10,20 +9,14 @@
   --color-muted: #64748b;
   --color-border: #e5e7eb;
 
-  /* Spacing */
   --space-xs: 8px;
   --space-sm: 12px;
   --space-md: 16px;
   --space-lg: 20px;
 
-  /* Radius */
   --radius-sm: 10px;
   --radius-md: 14px;
   --radius-lg: 18px;
 
-  /* Typography */
-  --font-main: Inter, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-
-  /* Sizes */
-  --header-height: 64px;
+  --font-main: Inter, system-ui, -apple-system, sans-serif;
 }
