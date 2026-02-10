@@ -1,14 +1,15 @@
-/* HEADER */
+/* LOGO */
 .app-logo {
-  height: 34px;
+  height: 28px; /* smaller so title can dominate */
   width: auto;
 }
 
+/* TITLE */
 .app-title {
-  font-size: 17px;
+  font-size: 20px;          /* bigger than before */
   font-weight: 600;
   color: #f8fafc;
-  letter-spacing: 0.4px;
+  letter-spacing: 0.6px;
 }
 
 /* CARD */
@@ -27,9 +28,4 @@
   font-weight: 600;
   margin-bottom: var(--space-sm);
   color: var(--color-text);
-}
-
-.card-body {
-  font-size: 14px;
-  color: var(--color-muted);
 }
