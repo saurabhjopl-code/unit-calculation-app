@@ -167,8 +167,59 @@
   opacity: 0.6;
 }
 
-/* PENDING */
-.pending-placeholder {
+/* PENDING SUBMISSIONS */
+.pending-empty {
   font-size: 14px;
   color: var(--color-muted);
+  margin-bottom: 12px;
+}
+
+.pending-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.pending-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 14px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  background: #ffffff;
+}
+
+.pending-left {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.pending-style {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.pending-sizes {
+  font-size: 13px;
+  color: var(--color-muted);
+}
+
+.pending-units {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+/* SUBMIT */
+.submit-button {
+  width: 100%;
+  padding: 14px;
+  border-radius: var(--radius-md);
+  font-size: 15px;
+  font-weight: 600;
+  border: none;
+  background: var(--color-primary);
+  color: #ffffff;
 }
