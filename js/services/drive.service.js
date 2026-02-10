@@ -5,12 +5,13 @@ const SECRET_KEY = "SWASTIK6482";
 
 /**
  * Submit pending rows to Google Sheet
+ * Uses text/plain to avoid CORS preflight
  */
 export async function submitToGoogleDrive(rows) {
   const response = await fetch(GOOGLE_SCRIPT_URL, {
     method: "POST",
     headers: {
-      "Content-Type": "application/json"
+      "Content-Type": "text/plain"
     },
     body: JSON.stringify({
       secret: SECRET_KEY,
