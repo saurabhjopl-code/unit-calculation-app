@@ -22,40 +22,39 @@
   <!-- MAIN -->
   <main class="app-main">
 
-    <!-- STYLE SELECTION -->
+    <!-- STYLE SEARCH (ACTIVE ON LOAD) -->
     <section class="card">
       <h2 class="card-title">Select Style</h2>
 
-      <div class="style-select">
-        <input
-          type="text"
-          class="style-input"
-          placeholder="Search or select Style ID"
-          readonly
-        />
+      <div class="style-search">
+        <div class="search-input-wrapper">
+          <span class="search-icon">🔍</span>
+          <input
+            type="text"
+            class="search-input"
+            placeholder="Search style ID (e.g. ST12)"
+          />
+        </div>
 
-        <div class="style-dropdown">
-          <div class="style-option">ST123</div>
-          <div class="style-option">ST124</div>
-          <div class="style-option">ST125</div>
+        <div class="search-suggestions">
+          <div class="suggestion-item">ST123</div>
+          <div class="suggestion-item">ST124</div>
+          <div class="suggestion-item">ST225</div>
         </div>
       </div>
     </section>
 
-    <!-- STYLE IMAGE + VERIFY -->
-    <section class="card">
+    <!-- STYLE IMAGE + VERIFY (LOCKED STATE) -->
+    <section class="card card-disabled">
       <h2 class="card-title">Verify Style</h2>
 
       <div class="style-verify">
         <div class="style-image-wrapper">
           <img
-            src=""
-            alt="Style Preview"
-            class="style-image"
+            src="./data/No-image.png"
+            alt="No Image"
+            class="style-image show"
           />
-          <div class="style-image-placeholder">
-            Style image will appear here
-          </div>
         </div>
 
         <button class="verify-button" disabled>
@@ -64,19 +63,22 @@
       </div>
     </section>
 
-    <!-- SIZE SELECTION -->
-    <section class="card">
+    <!-- SIZE SELECTION (LOCKED STATE) -->
+    <section class="card card-disabled">
       <h2 class="card-title">Select Sizes</h2>
     </section>
 
-    <!-- UNIT INPUT -->
-    <section class="card">
+    <!-- UNIT INPUT (LOCKED STATE) -->
+    <section class="card card-disabled">
       <h2 class="card-title">Enter Units</h2>
     </section>
 
-    <!-- PENDING -->
+    <!-- PENDING (ALWAYS VISIBLE) -->
     <section class="card">
       <h2 class="card-title">Pending Submissions</h2>
+      <div class="pending-placeholder">
+        No pending submissions
+      </div>
     </section>
 
   </main>
