@@ -26,21 +26,19 @@
     <section class="card">
       <h2 class="card-title">Select Style</h2>
 
-      <div class="style-search">
-        <div class="search-input-wrapper">
-          <span class="search-icon">🔍</span>
-          <input
-            type="text"
-            class="search-input"
-            placeholder="Search style ID (e.g. ST12)"
-          />
-        </div>
+      <div class="input-surface">
+        <span class="input-icon">🔍</span>
+        <input
+          type="text"
+          class="input-field"
+          placeholder="Search style ID (e.g. ST12)"
+        />
+      </div>
 
-        <div class="search-suggestions">
-          <div class="suggestion-item">ST123</div>
-          <div class="suggestion-item">ST124</div>
-          <div class="suggestion-item">ST225</div>
-        </div>
+      <div class="search-suggestions">
+        <div class="suggestion-item">ST123</div>
+        <div class="suggestion-item">ST124</div>
+        <div class="suggestion-item">ST225</div>
       </div>
     </section>
 
@@ -50,11 +48,7 @@
 
       <div class="style-verify">
         <div class="style-image-wrapper">
-          <img
-            src="./data/No-image.png"
-            alt="No Image"
-            class="style-image"
-          />
+          <img src="./data/No-image.png" class="style-image" />
         </div>
 
         <button class="verify-button" disabled>
@@ -90,17 +84,25 @@
     <section class="card card-disabled">
       <h2 class="card-title">Enter Units</h2>
 
-      <div class="unit-input-section">
-        <label class="unit-label">Total Units</label>
-        <input type="number" class="unit-input" placeholder="Enter total units" />
-        <div class="unit-helper">
-          Enter the total units for the selected sizes
-        </div>
-        <button class="save-button" disabled>Save</button>
+      <div class="input-surface">
+        <span class="input-icon">#</span>
+        <input
+          type="number"
+          class="input-field input-number"
+          placeholder="Enter total units"
+        />
       </div>
+
+      <div class="unit-helper">
+        Enter the total units for the selected sizes
+      </div>
+
+      <button class="save-button" disabled>
+        Save
+      </button>
     </section>
 
-    <!-- PENDING SUBMISSIONS (REFINED TABLE) -->
+    <!-- PENDING -->
     <section class="card">
       <h2 class="card-title">Pending Submissions</h2>
 
@@ -120,12 +122,6 @@
               <td>ST123</td>
               <td>M</td>
               <td>120</td>
-            </tr>
-            <tr>
-              <td>SKU002</td>
-              <td>ST225</td>
-              <td>Free Size</td>
-              <td>45</td>
             </tr>
           </tbody>
         </table>
