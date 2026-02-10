@@ -1,12 +1,12 @@
-body {
-  font-family: var(--font-main);
-  background: var(--bg-page);
-  color: var(--color-text);
-}
-
-.app-main {
-  padding: 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
+.app-header {
+  position: sticky;
+  top: 0;
+  height: 64px;
+  background: linear-gradient(180deg, #0f172a, #020617);
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  padding: 0 16px;
+  z-index: 100;
+  box-shadow: 0 6px 20px rgba(2, 6, 23, 0.4);
 }
