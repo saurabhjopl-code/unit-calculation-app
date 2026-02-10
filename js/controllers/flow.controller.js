@@ -4,6 +4,9 @@ export function goToStep(step) {
   appState.step = step;
 }
 
+/**
+ * Reset current selection AND clear search input
+ */
 export function resetCurrentSelection() {
   appState.current = {
     sku: null,
@@ -12,5 +15,10 @@ export function resetCurrentSelection() {
     sizes: [],
     units: null
   };
+
+  // 🔥 Clear style search input
+  const searchInput = document.querySelector(".card:first-of-type .input-field");
+  if (searchInput) searchInput.value = "";
+
   appState.step = STEPS.STYLE_SEARCH;
 }
