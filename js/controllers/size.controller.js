@@ -1,14 +1,8 @@
 import { appState, STEPS } from "../state/app.state.js";
 import { goToStep } from "./flow.controller.js";
+import { renderUI } from "../ui/ui.binding.js";
 
-/**
- * Toggle size selection.
- * Size implicitly resolves to SKU via stylesMap.
- */
 export function toggleSize(size) {
-  const style = appState.stylesMap[appState.current.styleId];
-  if (!style || !style.skusBySize[size]) return;
-
   const index = appState.current.sizes.indexOf(size);
 
   if (index === -1) {
@@ -20,4 +14,6 @@ export function toggleSize(size) {
   if (appState.current.sizes.length > 0) {
     goToStep(STEPS.UNIT_ENTERED);
   }
+
+  renderUI();
 }
