@@ -1,18 +1,29 @@
 :root {
+  /* Colors */
   --bg-page: #f8fafc;
   --bg-card: #ffffff;
+  --bg-header-start: #0f172a;
+  --bg-header-end: #020617;
 
   --color-primary: #2563eb;
   --color-text: #0f172a;
   --color-muted: #64748b;
   --color-border: #e5e7eb;
 
-  --radius-lg: 16px;
-  --radius-md: 12px;
-
+  /* Spacing */
+  --space-xs: 8px;
   --space-sm: 12px;
   --space-md: 16px;
   --space-lg: 20px;
 
-  --font-main: Inter, system-ui, -apple-system, sans-serif;
+  /* Radius */
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 18px;
+
+  /* Typography */
+  --font-main: Inter, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* Sizes */
+  --header-height: 64px;
 }
