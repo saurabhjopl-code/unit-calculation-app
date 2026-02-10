@@ -1,8 +1,9 @@
 import { appState } from "./state/app.state.js";
-import { loadPending } from "./services/storage.service.js";
+import { loadPending, clearPending } from "./services/storage.service.js";
 import { loadStylesData } from "./services/styles.service.js";
 import { renderUI } from "./ui/ui.binding.js";
 import { renderPendingTable } from "./ui/pending.ui.js";
+import { submitToGoogleDrive } from "./services/drive.service.js";
 
 import {
   getStyleSuggestions,
@@ -25,11 +26,12 @@ async function init() {
   bindSizes();
   bindUnits();
   bindSave();
+  bindSubmit();
 
   renderUI();
   renderPendingTable();
 
-  console.log("App ready");
+  console.log("App ready (V1.2)");
 }
 
 /* -------- BINDINGS -------- */
@@ -40,7 +42,6 @@ function bindSearch() {
   input.addEventListener("input", e => {
     const value = e.target.value.trim();
     if (!value) return clearSuggestions();
-
     renderSuggestions(getStyleSuggestions(value));
   });
 }
@@ -68,6 +69,40 @@ function bindUnits() {
 function bindSave() {
   document.querySelector(".save-button")
     .addEventListener("click", saveCurrentSelection);
+}
+
+/* -------- GOOGLE DRIVE SUBMIT -------- */
+
+function bindSubmit() {
+  const btn = document.querySelector(".submit-button");
+
+  btn.addEventListener("click", async () => {
+    if (!appState.pending.length) {
+      alert("No pending data to submit");
+      return;
+    }
+
+    btn.disabled = true;
+    btn.textContent = "Submitting...";
+
+    try {
+      const result = await submitToGoogleDrive(appState.pending);
+
+      if (result.success) {
+        clearPending();
+        appState.pending = [];
+        renderPendingTable();
+        alert("Data successfully submitted to Google Sheet ✅");
+      } else {
+        alert("Submission failed: " + result.error);
+      }
+    } catch (err) {
+      alert("Network error. Please try again.");
+    } finally {
+      btn.disabled = false;
+      btn.textContent = "Submit to Google Drive";
+    }
+  });
 }
 
 document.addEventListener("DOMContentLoaded", init);
