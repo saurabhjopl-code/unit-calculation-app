@@ -22,7 +22,7 @@
   <!-- MAIN -->
   <main class="app-main">
 
-    <!-- STYLE SEARCH (ACTIVE ON LOAD) -->
+    <!-- STYLE SEARCH -->
     <section class="card">
       <h2 class="card-title">Select Style</h2>
 
@@ -44,7 +44,7 @@
       </div>
     </section>
 
-    <!-- STYLE IMAGE + VERIFY (LOCKED STATE) -->
+    <!-- VERIFY STYLE -->
     <section class="card card-disabled">
       <h2 class="card-title">Verify Style</h2>
 
@@ -53,7 +53,7 @@
           <img
             src="./data/No-image.png"
             alt="No Image"
-            class="style-image show"
+            class="style-image"
           />
         </div>
 
@@ -63,17 +63,26 @@
       </div>
     </section>
 
-    <!-- SIZE SELECTION (LOCKED STATE) -->
+    <!-- SIZE SELECTION (STEP 2) -->
     <section class="card card-disabled">
       <h2 class="card-title">Select Sizes</h2>
+
+      <div class="size-selection">
+        <div class="size-chip">XS</div>
+        <div class="size-chip">S</div>
+        <div class="size-chip size-chip-selected">M</div>
+        <div class="size-chip">L</div>
+        <div class="size-chip">XL</div>
+        <div class="size-chip">XXL</div>
+      </div>
     </section>
 
-    <!-- UNIT INPUT (LOCKED STATE) -->
+    <!-- UNIT INPUT -->
     <section class="card card-disabled">
       <h2 class="card-title">Enter Units</h2>
     </section>
 
-    <!-- PENDING (ALWAYS VISIBLE) -->
+    <!-- PENDING -->
     <section class="card">
       <h2 class="card-title">Pending Submissions</h2>
       <div class="pending-placeholder">
