@@ -1,12 +1,11 @@
-/* LOGO */
+/* HEADER */
 .app-logo {
-  height: 28px; /* smaller so title can dominate */
+  height: 28px;
   width: auto;
 }
 
-/* TITLE */
 .app-title {
-  font-size: 20px;          /* bigger than before */
+  font-size: 20px;
   font-weight: 600;
   color: #f8fafc;
   letter-spacing: 0.6px;
@@ -27,5 +26,42 @@
   font-size: 15px;
   font-weight: 600;
   margin-bottom: var(--space-sm);
+}
+
+/* STYLE SELECTION */
+.style-select {
+  position: relative;
+}
+
+.style-input {
+  width: 100%;
+  padding: 14px;
+  font-size: 15px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  background: #ffffff;
   color: var(--color-text);
+}
+
+.style-input::placeholder {
+  color: var(--color-muted);
+}
+
+.style-dropdown {
+  margin-top: 8px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  overflow: hidden;
+  background: #ffffff;
+  box-shadow: 0 8px 20px rgba(2, 6, 23, 0.08);
+}
+
+.style-option {
+  padding: 12px 14px;
+  font-size: 15px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.style-option:last-child {
+  border-bottom: none;
 }
